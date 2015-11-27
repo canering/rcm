@@ -18,3 +18,15 @@ Should accept directory:file syntax
   /*/.example:/*/.dotfiles/example (glob)
   /*/.excluded:/*/.dotfiles/excluded (glob)
   /*/.included:/*/.other-dotfiles/included (glob)
+
+Should handle excludes with globs
+
+  $ mkdir -p fresh/hola/chao
+  > touch fresh/hola/chao/wo
+  > touch fresh/hola/chao/nemo
+  > touch fresh/hola/tossala
+  > touch fresh/hola/s
+  > touch fresh/s
+
+  $ lsrc -d fresh -x 'hola/chao/*' -x s
+  /*/.hola/tossala:/*/.dotfiles/hola/tossala (glob)
